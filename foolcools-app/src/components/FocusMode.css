@@ -1,0 +1,150 @@
+.focus-mode-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.95);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  color: white;
+  backdrop-filter: blur(5px);
+  overflow: hidden;
+}
+
+.breathing-circle {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3.5rem;
+  position: relative;
+  transition: all 0.5s ease;
+}
+
+.breathing-circle::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  animation: pulse 10s infinite;
+  z-index: -1;
+}
+
+.breathing-circle.inhale {
+  box-shadow: 0 0 70px 40px rgba(73, 146, 228, 0.7);
+  animation: grow 4s ease-in-out;
+}
+
+.breathing-circle.hold {
+  box-shadow: 0 0 90px 50px rgba(73, 146, 228, 0.8);
+}
+
+.breathing-circle.exhale {
+  box-shadow: 0 0 70px 40px rgba(73, 146, 228, 0.7);
+  animation: shrink 4s ease-in-out;
+}
+
+.inner-circle {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.timer {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.breath-instruction {
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  height: 1.6rem;
+  opacity: 0.9;
+}
+
+.breath-count {
+  font-size: 1rem;
+  opacity: 0.7;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+.focus-controls {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.control-button {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 0.75rem 2rem;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.control-button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.end-button {
+  border-color: rgba(255, 82, 82, 0.6);
+  color: rgba(255, 120, 120, 1);
+}
+
+.end-button:hover {
+  background-color: rgba(255, 82, 82, 0.1);
+}
+
+.focus-tips {
+  max-width: 500px;
+  text-align: center;
+  margin-top: 1.5rem;
+  opacity: 0.7;
+  font-size: 1rem;
+  line-height: 1.6;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1.2rem;
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+}
+
+@keyframes grow {
+  from { transform: scale(0.85); }
+  to { transform: scale(1); }
+}
+
+@keyframes shrink {
+  from { transform: scale(1); }
+  to { transform: scale(0.85); }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 40px 20px rgba(73, 146, 228, 0.4); }
+  50% { box-shadow: 0 0 80px 40px rgba(73, 146, 228, 0.7); }
+  100% { box-shadow: 0 0 40px 20px rgba(73, 146, 228, 0.4); }
+} 

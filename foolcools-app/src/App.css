@@ -1,0 +1,320 @@
+:root {
+  --primary-color: #4a6fa5;
+  --accent-color: #3498db;
+  --text-color: #333;
+  --light-text: #f0f0f0;
+  --background-color: #f8f9fa;
+  --card-color: white;
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Welcome Screen */
+.welcome-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--card-color);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  width: 90%;
+  max-width: 500px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.app-header {
+  margin-bottom: 2rem;
+}
+
+.app-header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.research-summary {
+  background-color: rgba(52, 152, 219, 0.05);
+  border-left: 3px solid var(--accent-color);
+  padding: 1rem 1.2rem;
+  margin: 0.5rem 0 2rem;
+  text-align: left;
+  border-radius: 0 8px 8px 0;
+}
+
+.research-fact {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.research-fact:last-child {
+  margin-bottom: 0;
+}
+
+.time-selector-container {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.time-label {
+  display: block;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 0.75rem;
+}
+
+.time-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.time-button {
+  flex: 1;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.time-button:hover {
+  background: #e0e0e0;
+}
+
+.time-button.active {
+  background: var(--accent-color);
+  color: white;
+}
+
+.start-button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 2px 5px rgba(52, 152, 219, 0.2);
+}
+
+.start-button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+}
+
+.science-citation {
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* Focus Overlay */
+.focus-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px);
+  color: white;
+  z-index: 1000;
+  transition: var(--transition);
+}
+
+.focus-overlay.inhale {
+  background: radial-gradient(
+    circle at center,
+    rgba(52, 152, 219, 0.4) 0%,
+    rgba(0, 0, 0, 0.85) 70%
+  );
+  animation: pulseIn 4s ease-in-out;
+}
+
+.focus-overlay.hold {
+  background: radial-gradient(
+    circle at center,
+    rgba(52, 152, 219, 0.5) 0%,
+    rgba(0, 0, 0, 0.85) 70%
+  );
+}
+
+.focus-overlay.exhale {
+  background: radial-gradient(
+    circle at center,
+    rgba(52, 152, 219, 0.3) 0%,
+    rgba(0, 0, 0, 0.85) 70%
+  );
+  animation: pulseOut 4s ease-in-out;
+}
+
+.focus-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1001;
+}
+
+.focus-timer {
+  font-size: 4rem;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.breath-indicator {
+  margin-bottom: 3rem;
+}
+
+.breath-circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 30px 15px rgba(52, 152, 219, 0.3);
+}
+
+.focus-overlay.inhale .breath-circle {
+  animation: breatheIn 4s ease-in-out;
+}
+
+.focus-overlay.exhale .breath-circle {
+  animation: breatheOut 4s ease-in-out;
+}
+
+.breath-text {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+}
+
+.blink-reminder {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.focus-stats {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.focus-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.control-btn {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.control-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.focus-tip {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  opacity: 0.6;
+  text-align: center;
+  max-width: 400px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseIn {
+  from { background-position: center 20%; }
+  to { background-position: center center; }
+}
+
+@keyframes pulseOut {
+  from { background-position: center center; }
+  to { background-position: center 20%; }
+}
+
+@keyframes breatheIn {
+  from { transform: scale(0.8); opacity: 0.8; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes breatheOut {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(0.8); opacity: 0.8; }
+}

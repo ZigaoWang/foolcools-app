@@ -1,0 +1,126 @@
+.completion-notification {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.completion-notification.visible {
+  opacity: 1;
+}
+
+.notification-content {
+  background-color: white;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.5s ease;
+}
+
+.success-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #4caf50;
+  color: white;
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+  animation: pulse 2s infinite;
+}
+
+.notification-content h2 {
+  color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem 0;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.science-note {
+  background-color: #f5f9ff;
+  border-left: 4px solid #3f51b5;
+  padding: 1rem;
+  text-align: left;
+  margin: 2rem 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+.dismiss-button {
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 6px rgba(63, 81, 181, 0.3);
+}
+
+.dismiss-button:hover {
+  background-color: #303f9f;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(63, 81, 181, 0.4);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(76, 175, 80, 0.6);
+  }
+  100% {
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+  }
+} 
